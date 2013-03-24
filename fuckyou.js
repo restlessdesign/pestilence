@@ -121,12 +121,79 @@ var FuckYou = (function() {
         }
     };
 
+// Mouse Pest ________________________________________________________________
+
+    /**
+     * Replaces the user's cursor with an identical one (depending on OS
+     * default) that is offset from the actual position of the cursor.
+     */
+    function MousePest() {
+        var self = this,
+            osx_cursor_normal_png = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAUCAYAAAC9BQwsAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNAay06AAAAAUdEVYdENyZWF0aW9uIFRpbWUAOC83LzEwvsEqxgAAAe9JREFUOI2N081qE1EUB/Bz7teY3GEGRwYSELsQbBkLboTZFGaW4tZko4us8hozD+ADaBKMD2AK2eQBwmySbLIxCW6sIKEgQqMQQ9o6x02nTNU0OXC5m/O7By7/A57nca21JiKaz+c1y7IKnufxKIoQbivHcQwpZZmuajgcVkzTLG7FlmUVOOcPiYh83yciSnfCpmkWOef7REQAsDu+ggcZ3Bn/D+6EN8FNOI5j3ApvxdvgJrwTzOPxePzCtu07eZjmm/LNfx/DMO7+A33fp9ls9jHDrVbrS6/X+4CIrxDxGWPsiVLq3g2YTeh2u8fNZvMkP5UxdsQ5P5BSlrXWOp+clIhSRHyJiNXsIQCgdrv9aTKZvFZKudkSMMYYAcAFAABj7DkifkbEr0mSvK/X6ycAAI1G45Hruk+JCLXWl9VqNc22o8QYe8w535dSloUQDxhjR/mpRJQKIe47jmPEcYysVCpdGobxU0p5qpQ6LRaLZ0KIH4j4PUmSd4PBgIiIRqPRWwC4jpyoVCppp9NZL5fLc601ua5L0+k0XSwWZ2EYviGiYwAgRPwmhFgZhpHeCHsW4CiKMAgCZllWQSnlCiH2hBB72ccEQcAAAHgG+/3+9V2r1WC9Xv9erVbniPhLKbW0bXt1eHh4EYYh9ft9+ANDWHBBjehDcAAAAABJRU5ErkJggg==',
+            osx_cursor_pointer_png = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABHElEQVR4nMSUvQ2DMBCF3dCkoKGhSUOTgiYSXZo0FCzALKzALKzACqzACqzg+Dl36GLMjwVSTjqdQfbHvXeAUp4oy1KbgoxNRr49hwOwaZq01gND01PQoij0N2bgkzq9DPgymVwGxHWWZXZN3ob5KoEAdF03r/khu+C6rrmLmIEYTNu2NCBt1xKMfco3MMAQfd/PEvdiGDYGBsA4jj++IXAPctGhrA7QO7BYQrniEO67FWBWswaEBymks19bQKiAn1tAC8VmPJmha0Aht/J66EqX0KZp7FpW+EjAt8n7YsqudBfKrxAP5mh3Cz8B5eSuQrpb+EkHZVZiHfx9Q0pOBzkh8UE1V4F/oIgOJCJxfaN6/sf7t/gAAAD//wMAKzGYut3nuYYAAAAASUVORK5CYII=',
+            win_cursor_normal_png = '@todo',
+            win_cursor_pointer_png = '@todo',
+            is_mac = true;
+
+        self.cursor_normal = is_mac ? osx_cursor_normal_png : win_cursor_normal_png;
+        self.cursor_pointer = is_mac ? osx_cursor_pointer_png : win_cursor_pointer_png;
+
+        self.updateCSS();
+    }
+
+    MousePest.prototype.updateCSS = function() {
+        var self = this,
+            doc = document,
+            style_sheet,
+            rules = '';
+
+        rules += 'body.lol { cursor: url(' + self.cursor_normal + ') !important; }';
+        rules += 'body.lol a { cursor: url(' + self.cursor_pointer + ') !important; }';
+
+        self.element = doc.createElement('style'),
+        self.element.type = 'text/css';
+        self.element.id = 'mouse_pest';
+
+        style_sheet = self.element.styleSheet;
+
+        if (style_sheet) {
+            style_sheet.cssText = rules;
+        }
+        else {
+            self.element.appendChild(doc.createTextNode(rules));
+        }
+
+        doc.getElementsByTagName('head')[0].appendChild(self.element);
+        doc.body.className += ' lol';
+    };
+
+    MousePest.prototype.destroy = function() {
+        var self = this,
+            element,
+            parent;
+
+        if (!self.element) {
+            return;
+        }
+
+        element = document.getElementById('mouse_pest');
+        parent = element.getParentNode();
+
+        if (parent) {
+            parent.removeNode(element);
+        }
+    };
+
 // Initialization ____________________________________________________________
 
     var pests = [];
     function initialize(options) {
         if (options.audio_pest === true) {
             pests.push(new AudioPest());
+        }
+
+        if (options.mouse_pest === true) {
+            pests.push(new MousePest());
         }
     }
 
@@ -151,5 +218,6 @@ var FuckYou = (function() {
  * be thrown and break your site anyway--mission accomplished!
  */
 setTimeout(FuckYou.initialize, 8000, [{
-    audio_pest: true
+    audio_pest: true,
+    mouse_pest: true
 }]);
