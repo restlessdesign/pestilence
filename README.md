@@ -1,6 +1,6 @@
 # pestilence
 
-A collection of JavaScript utilities to ruin someone’s day, regardless of ability…or disability. Perfect for that last-minute April Fools’ prank!
+A collection of JavaScript utilities to ruin someone’s day, regardless of ability…or disability.
 
 11.93KB minified & gzipped
 
