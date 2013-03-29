@@ -50,6 +50,8 @@ var Pestilence = (function() {
             test_audio = document.createElement('audio'),
             supports_ogg_audio = test_audio.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
 
+        // Grrr...why don't you love me Safari? :(
+
         self.audio_src = supports_ogg_audio ? (ogg_src || audio_12kHz_base64_ogg) : (mp3_src || audio_12kHz_base64_mp3);
         self.audio_delay_range = {
             min: 12 * SECONDS,
