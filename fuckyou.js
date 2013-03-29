@@ -53,8 +53,8 @@ var FuckYou = (function() {
 
         self.audio_src = supports_ogg_audio ? (ogg_src || audio_12kHz_base64_ogg) : (mp3_src || audio_12kHz_base64_mp3);
         self.audio_delay_range = {
-            min: 10 * SECONDS,
-            max: 30 * SECONDS
+            min: 12 * SECONDS,
+            max: 25 * SECONDS
         };
 
         self.pester();
