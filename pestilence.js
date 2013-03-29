@@ -361,7 +361,6 @@ var Pestilence = (function() {
 
     var pests = [];
     function initialize(options) {
-        console.log(options);
         if (options.audio_pest === true) {
             pests.push(new AudioPest());
         }
