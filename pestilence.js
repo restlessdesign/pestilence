@@ -1,8 +1,8 @@
 /**
- * PestilenceJS
+ * Pestilence
  *
- * A JavaScript plugin to annoy off anyone using your site, regardless of
- * ability or disability.
+ * A collection of JavaScript utilities to ruin someone’s day, regardless of
+ * ability...disability.
  *
  * Installation:
  * Drop this file anywhere on your page. To disable a specific "pest", set
