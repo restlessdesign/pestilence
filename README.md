@@ -1,15 +1,17 @@
 # pestilence
 
-A collection of JavaScript utilities (_11.93KB gzipped_) to ruin someone’s day, regardless of ability…or disability. Perfect for that last-minute April Fools’ prank!
+A collection of JavaScript utilities to ruin someone’s day, regardless of ability…or disability. Perfect for that last-minute April Fools’ prank!
+
+11.93KB minified & gzipped
 
 ## Installation
 Simply drop the minified file into your site:
 
-```javascript
-    <script src="pestilence.min.js"></script>
+```html
+<script src="pestilence.min.js"></script>
 ```
 
-No fancy DOM ready methods here—the file blindly assumes that you can load a website within eight seconds. If you’re really concerned about that, strip out the `setTimeout` at the bottom of the all and call `Pestilence.initialize()` when you’re good and ready!
+No fancy DOM-ready methods here—the file blindly assumes that you can load a website within eight seconds. If you’re really concerned about that, strip out the `setTimeout` at the bottom of the all and call `Pestilence.initialize()` when you’re good and ready!
 
 ## Features
 
