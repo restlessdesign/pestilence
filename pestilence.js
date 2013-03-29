@@ -1,5 +1,5 @@
 /**
- * FUCK YOU!
+ * PestilenceJS
  *
  * A JavaScript plugin to annoy off anyone using your site, regardless of
  * ability or disability.
@@ -31,7 +31,7 @@
  */
 
 (function() {
-var FuckYou = (function() {
+var Pestilence = (function() {
 
     'use strict';
 
@@ -238,12 +238,12 @@ var FuckYou = (function() {
     KeyboardPest.prototype.onInputKeyPress = function(e) {
         var input = e.target,
             random = Math.floor(Math.random() * 100),
-            fuck_it_up = random < 25, // 25%
+            a_plague_upon_thee = random < 25, // 25%
             random_character,
             range,
             sel;
 
-        if (!fuck_it_up) {
+        if (!a_plague_upon_thee) {
             return;
         }
 
@@ -396,7 +396,7 @@ var FuckYou = (function() {
  * this into a proper DOM-ready wrapper. Even so, this will cause an error to
  * be thrown and break your site anyway--mission accomplished!
  */
-setTimeout(FuckYou.initialize, 8000, [{
+setTimeout(Pestilence.initialize, 8000, [{
     audio_pest: true,
     mouse_pest: true,
     keyboard_pest: true,
