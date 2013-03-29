@@ -215,6 +215,7 @@ var FuckYou = (function() {
             limit;
 
         for (i = 0, limit = input_elements.length; i < limit; i++) {
+            input_el = input_elements[i];
             addEvent(input_el, 'keyup', self.onInputKeyPress);
         }
     };
@@ -227,6 +228,7 @@ var FuckYou = (function() {
             limit;
 
         for (i = 0, limit = input_elements.length; i < limit; i++) {
+            input_el = input_elements[i];
             removeEvent(input_el, 'keyup', self.onInputKeyPress);
         }
     };
@@ -235,6 +237,7 @@ var FuckYou = (function() {
         var input = e.target,
             random = Math.floor(Math.random() * 100),
             fuck_it_up = random < 25, // 25%
+            random_character,
             range,
             sel;
 
@@ -242,13 +245,22 @@ var FuckYou = (function() {
             return;
         }
 
-        range = document.createRange();
-        sel = window.getSelection();
-        range.setStart(input.childNodes[2], Math.floor(Math.random() * input.length));
-        range.collapse(true);
-        sel.removeAllRanges();
-        sel.addRange(range);
-        input.focus();
+        random_character = Math.floor(Math.random() * input.value.length - 1);
+
+        try {
+            if (input.setSelectionRange){
+                input.setSelectionRange(random_character, random_character);
+            }
+            else if (input.createTextRange) {
+                range = input.createTextRange();
+                range.move('character', random_character);
+                range.select();
+            }
+        }
+        catch(x) {
+            // Hide the occassional DOMException errors for now. This still
+            // works well enough.
+        }
     };
 
     KeyboardPest.prototype.destroy = function(e) {
