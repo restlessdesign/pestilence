@@ -17,7 +17,7 @@ No fancy DOM-ready methods here—the file blindly assumes that you can load a w
 
 ### AudioPest
 
-Plays a high-pitched noise a random intervals.
+Plays a high-pitched noise at random intervals.
 
 ### Mouse Pest
 
