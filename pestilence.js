@@ -30,7 +30,6 @@
  * limitations under the License.
  */
 
-(function() {
 var Pestilence = (function() {
 
     'use strict';
@@ -360,6 +359,7 @@ var Pestilence = (function() {
 
     var pests = [];
     function initialize(options) {
+        console.log(options);
         if (options.audio_pest === true) {
             pests.push(new AudioPest());
         }
@@ -385,7 +385,11 @@ var Pestilence = (function() {
 
     return {
         initialize: initialize,
-        getPests: getPests
+        getPests: getPests,
+        AudioPest: AudioPest,
+        MousePest: MousePest,
+        KeyboardPest: KeyboardPest,
+        AccessibilityPest: AccessibilityPest
     };
 })();
 
@@ -396,11 +400,9 @@ var Pestilence = (function() {
  * this into a proper DOM-ready wrapper. Even so, this will cause an error to
  * be thrown and break your site anyway--mission accomplished!
  */
-setTimeout(Pestilence.initialize, 8000, [{
+setTimeout(Pestilence.initialize, 8000, {
     audio_pest: true,
     mouse_pest: true,
     keyboard_pest: true,
     accessibility_pest: true
-}]);
-
-})();
+});
