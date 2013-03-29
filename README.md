@@ -11,7 +11,7 @@ Simply drop the minified file into your site:
 <script src="pestilence.min.js"></script>
 ```
 
-No fancy DOM-ready methods here—the file blindly assumes that you can load a website within eight seconds. If you’re really concerned about that, strip out the `setTimeout` at the bottom of the all and call `Pestilence.initialize()` when you’re good and ready!
+No fancy DOM-ready methods here—the file blindly assumes that you can load a website within eight seconds. If you’re really concerned about that, strip out the `setTimeout` at the bottom of the file and call `Pestilence.initialize()` when you’re good and ready!
 
 ## Features
 
