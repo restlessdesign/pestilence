@@ -4,6 +4,10 @@ A collection of JavaScript utilities to ruin someone’s day, regardless of abil
 
 11.93KB minified & gzipped
 
+## Demo
+
+http://restlessdesign.github.io/pestilence/
+
 ## Installation
 Simply drop the minified file into your site:
 
